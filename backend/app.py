@@ -1,5 +1,10 @@
-print("Hello AI VTuber!")
+print("=== AI VTuber ===")
 
-name = input("請輸入你的名字：")
+while True:
+    message = input("你：")
 
-print(f"你好，{name}！歡迎來到 AI VTuber。")
+    if message.lower() == "exit":
+        print("AI：掰掰！")
+        break
+
+    print(f"AI：你剛剛說的是：{message}")
