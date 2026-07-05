@@ -4,6 +4,9 @@ import os
 
 load_dotenv()
 
+with open("prompts/persona.txt", "r", encoding="utf-8") as f:
+    persona = f.read()
+
 client = genai.Client(
     api_key=os.getenv("GEMINI_API_KEY")
 )
@@ -19,7 +22,12 @@ while True:
 
     response = client.models.generate_content(
         model="gemini-2.5-flash",
-        contents=message
+        contents=f"""
+{persona}
+
+使用者：
+{message}
+"""
     )
 
     print("AI：" + response.text)
